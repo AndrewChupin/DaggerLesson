@@ -35,6 +35,7 @@ dependencies {
 
     api deps.android.roomRuntime
     api deps.android.roomRx
+    annotationProcessor deps.android.roomCompiler
 
     api deps.reactivex.rxJava
     api deps.reactivex.rxAndroid

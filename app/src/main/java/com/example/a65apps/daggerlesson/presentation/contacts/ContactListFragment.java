@@ -1,6 +1,7 @@
 package com.example.a65apps.daggerlesson.presentation.contacts;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,12 +13,20 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.a65apps.daggerlesson.R;
+import com.example.a65apps.daggerlesson.app.AppDelegate;
 import com.example.a65apps.daggerlesson.data.contact.Contact;
+import com.example.a65apps.daggerlesson.di.contacts.ContactListComponent;
+import com.example.a65apps.daggerlesson.di.contacts.ContactListModule;
+import com.example.a65apps.daggerlesson.di.contacts.DaggerContactListComponent;
 import com.example.a65apps.daggerlesson.presentation.adapters.ContactsAdapter;
 import com.example.a65apps.daggerlesson.presentation.contact.ContactPresenter;
 
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +45,18 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
 
     @InjectPresenter
     ContactListPresenter presenter;
+    @Inject
+    Provider<ContactListPresenter> presenterProvider;
+
+    @Override
+    public void onAttach(Context context) {
+        ContactListComponent contactListComponent = DaggerContactListComponent.builder()
+                .appComponent(((AppDelegate) getActivity().getApplication()).getAppComponent())
+                .contactListModule(new ContactListModule())
+                .build();
+        contactListComponent.inject(this);
+        super.onAttach(context);
+    }
 
     @Nullable
     @Override
@@ -71,6 +92,11 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
     @Override
     public void changeState(@NonNull String state) {
 
+    }
+
+    @ProvidePresenter
+    ContactListPresenter providePresetner() {
+        return presenterProvider.get();
     }
 
 

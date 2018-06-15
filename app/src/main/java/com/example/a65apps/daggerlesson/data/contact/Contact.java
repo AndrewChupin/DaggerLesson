@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 public final class Contact {
 
     @PrimaryKey
-    @ColumnInfo(name = "id")
     private final long id;
 
     @ColumnInfo(name = "name")
@@ -48,5 +47,15 @@ public final class Contact {
     @NonNull
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }

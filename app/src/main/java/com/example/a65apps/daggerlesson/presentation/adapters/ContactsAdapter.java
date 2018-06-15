@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private AdapterDelegatesManager<List<Contact>> delegatesManager;
-    private List<Contact> items;
+    private List<Contact> items = new ArrayList<>();
 
     public ContactsAdapter(Activity activity) {
         delegatesManager = new AdapterDelegatesManager<>();

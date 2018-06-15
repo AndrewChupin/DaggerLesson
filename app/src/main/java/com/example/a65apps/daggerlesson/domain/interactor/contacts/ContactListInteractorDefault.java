@@ -1,6 +1,7 @@
 package com.example.a65apps.daggerlesson.domain.interactor.contacts;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.data.contact.ContactRepository;
@@ -43,8 +44,14 @@ public class ContactListInteractorDefault implements ContactListInteractor {
         return Completable.defer(() -> contactRepository.deleteAll())
                 .andThen(tokenRepository.findToken(Token.CONTACTS_REQUEST_TOKEN))
                 .flatMap((token) -> contactService.loadContacts(new LoadContactsRequest(token.getValue())))
-                .flatMap((result) -> contactRepository.insertAll(result).toSingle(() -> result))
-                .flatMap((result) -> contactRepository.findAll());
+                .flatMap((result) -> {
+                    Log.d("Logos", "Data1 " + result);
+                    return contactRepository.insertAll(result).toSingle(() -> result);
+                })
+                .flatMap((result) -> {
+                    Log.d("Logos", "Data2 " + result);
+                    return contactRepository.findAll();
+                });
     }
 
     @NonNull
@@ -52,7 +59,13 @@ public class ContactListInteractorDefault implements ContactListInteractor {
     public Single<List<Contact>> updateContactsContacts() {
         return Single.defer(() -> tokenRepository.findToken(Token.CONTACTS_REQUEST_TOKEN))
                 .flatMap((token) -> contactService.loadContacts(new LoadContactsRequest(token.getValue())))
-                .flatMap((result) -> contactRepository.insertAll(result).toSingle(() -> result))
-                .flatMap((result) -> contactRepository.findAll());
+                .flatMap((result) -> {
+                    Log.d("Logos", "Data1 " + result);
+                    return contactRepository.insertAll(result).toSingle(() -> result);
+                })
+                .flatMap((result) -> {
+                    Log.d("Logos", "Data2 " + result);
+                    return contactRepository.findAll();
+                });
     }
 }

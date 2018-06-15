@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 
 public interface ContactApi {
 
-    @GET
+    @GET("/get_contacts")
     Single<BaseContactResponse<List<ContactDto>>> getContacts();
 
 }

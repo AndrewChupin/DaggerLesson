@@ -27,4 +27,9 @@ public class AppDelegate extends Application {
                 .build();
         appComponent.inject(this);
     }
+
+    @NonNull
+    public AppComponent getAppComponent() {
+        return appComponent;
+    }
 }

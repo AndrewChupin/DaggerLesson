@@ -43,6 +43,7 @@ dependencies {
     api deps.arello.moxyAppCompat
     annotationProcessor deps.arello.moxyCompiler
     annotationProcessor deps.square.butterknifeCompiler
+    annotationProcessor deps.android.roomCompiler
 
     annotationProcessor deps.google.daggerProcessor
 }

@@ -10,6 +10,7 @@ import com.example.a65apps.daggerlesson.di.core.AppModule;
 import com.example.a65apps.daggerlesson.di.core.DaggerAppComponent;
 import com.example.a65apps.daggerlesson.di.main.DaggerMainComponent;
 import com.example.a65apps.daggerlesson.di.main.MainComponent;
+import com.example.a65apps.daggerlesson.presentation.contacts.ContactListFragment;
 
 import javax.inject.Inject;
 
@@ -24,14 +25,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        AppComponent appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(getApplication()))
-                .build();
-        MainComponent mainComponent = DaggerMainComponent.builder()
-                .appComponent(appComponent)
-                .build();
-        mainComponent.inject(this);
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new ContactListFragment())
+                .commit();
     }
 }

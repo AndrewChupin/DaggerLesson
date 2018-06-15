@@ -50,4 +50,13 @@ public class ContactDto {
         return imageUrl;
     }
 
+    @Override
+    public String toString() {
+        return "ContactDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }
