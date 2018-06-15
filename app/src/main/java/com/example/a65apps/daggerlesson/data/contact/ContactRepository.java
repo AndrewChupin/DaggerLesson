@@ -1,5 +1,8 @@
 package com.example.a65apps.daggerlesson.data.contact;
 
-public interface ContactRepository {
+import com.example.core.data.BaseReactiveRepository;
+
+
+interface ContactRepository<Entity, Id> extends BaseReactiveRepository<Entity, Id> {
 
 }

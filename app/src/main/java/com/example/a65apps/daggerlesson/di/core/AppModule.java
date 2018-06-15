@@ -1,6 +1,5 @@
 package com.example.a65apps.daggerlesson.di.core;
 
-
 import android.app.Application;
 import android.content.Context;
 

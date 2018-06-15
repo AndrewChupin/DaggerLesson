@@ -12,6 +12,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "DATA_BASE_NAME", '"example-database"'
+        buildConfigField "String", "SHARED_PREFERENCES_NAME", '"example-shared"'
     }
 
     buildTypes {
@@ -25,25 +28,16 @@ android {
             }
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation deps.support.appCompat
-    implementation deps.support.recyclerView
-    implementation deps.support.cardView
-    implementation deps.support.support
+    implementation project(":core")
 
-    implementation deps.android.roomRuntime
-    implementation deps.android.roomRx
-
-    implementation deps.google.dagger
     annotationProcessor deps.google.daggerProcessor
-
-    implementation deps.square.retrofit
-    implementation deps.square.okhttp
-    implementation deps.square.retrofitRxAdapter
-    implementation deps.square.moshiConverter
 }
