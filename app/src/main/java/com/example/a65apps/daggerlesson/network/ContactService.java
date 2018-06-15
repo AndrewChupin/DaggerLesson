@@ -1,7 +1,4 @@
 package com.example.a65apps.daggerlesson.network;
 
-public interface ChatApi {
-
-
-
+public interface ContactService {
 }

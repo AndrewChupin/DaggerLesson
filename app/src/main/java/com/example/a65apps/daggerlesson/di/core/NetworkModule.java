@@ -1,7 +1,7 @@
 package com.example.a65apps.daggerlesson.di.core;
 
 
-import com.example.a65apps.daggerlesson.network.ChatApi;
+import com.example.a65apps.daggerlesson.network.ContactApi;
 
 
 import javax.inject.Singleton;
@@ -16,11 +16,11 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    public ChatApi provideApi() {
+    public ContactApi provideApi() {
         return new Retrofit.Builder()
                 .baseUrl("")
                 .build()
-                .create(ChatApi.class);
+                .create(ContactApi.class);
     }
 
 }
