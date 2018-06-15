@@ -16,7 +16,7 @@ import com.example.a65apps.daggerlesson.domain.interactor.contacts.ContactListIn
 import com.example.a65apps.daggerlesson.domain.mapper.contact.ContactsDtoToCommonMapper;
 import com.example.a65apps.daggerlesson.network.ContactApi;
 import com.example.a65apps.daggerlesson.network.ContactService;
-import com.example.a65apps.daggerlesson.network.ContactServiceRetroift;
+import com.example.a65apps.daggerlesson.network.ContactServiceRetrofit;
 import com.example.a65apps.daggerlesson.presentation.contacts.ContactListPresenter;
 import com.example.core.domain.Mapper;
 
@@ -50,7 +50,7 @@ public class ContactListModule {
     @Provides
     @FragmentScope
     ContactService provideContactService(ContactApi contactApi, Mapper<List<ContactDto>, List<Contact>> mapper) {
-        return new ContactServiceRetroift(contactApi, mapper);
+        return new ContactServiceRetrofit(contactApi, mapper);
     }
 
     @Provides

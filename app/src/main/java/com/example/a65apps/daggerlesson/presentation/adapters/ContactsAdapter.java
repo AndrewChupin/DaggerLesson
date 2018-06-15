@@ -43,9 +43,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return items.size();
     }
 
-    public void updateContacts(@NonNull List<Contact> items) {
+    public void setItems(@NonNull List<Contact> items) {
         this.items = items;
-        notifyDataSetChanged();
     }
 
+    public List<Contact> getItems() {
+        return items;
+    }
 }

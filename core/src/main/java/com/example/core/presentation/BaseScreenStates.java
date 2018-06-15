@@ -1,6 +1,6 @@
 package com.example.core.presentation;
 
-public class ScreenStates {
+public class BaseScreenStates {
 
     public static final String REFRESH = "REFRESH";
     public static final String LOADING = "LOADING";

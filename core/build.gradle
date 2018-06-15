@@ -50,6 +50,9 @@ dependencies {
     api deps.square.retrofitRxAdapter
     api deps.square.moshiConverter
 
+    api deps.arello.moxy
+    api deps.arello.moxyAppCompat
+
     api deps.bumptech.glide
     annotationProcessor deps.bumptech.glideCompiler
 

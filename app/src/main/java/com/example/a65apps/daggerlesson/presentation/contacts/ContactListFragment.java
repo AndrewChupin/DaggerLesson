@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +22,8 @@ import com.example.a65apps.daggerlesson.di.contacts.ContactListComponent;
 import com.example.a65apps.daggerlesson.di.contacts.ContactListModule;
 import com.example.a65apps.daggerlesson.di.contacts.DaggerContactListComponent;
 import com.example.a65apps.daggerlesson.presentation.adapters.ContactsAdapter;
-import com.example.a65apps.daggerlesson.presentation.contact.ContactPresenter;
+import com.example.core.presentation.BaseFragment;
+import com.example.core.utils.DiffUtils;
 
 import java.util.List;
 
@@ -33,13 +35,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class ContactListFragment extends MvpAppCompatFragment implements ContactListView {
+public class ContactListFragment extends BaseFragment implements ContactListView {
 
     @BindView(R.id.rv_contacts)
     public RecyclerView contactsView;
 
-    @Nullable
-    private Unbinder unbinder;
+    @BindView(R.id.swipe_refresh)
+    public SwipeRefreshLayout swipeRefreshLayout;
+
     @Nullable
     private ContactsAdapter contactsAdapter;
 
@@ -50,21 +53,15 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
     Provider<ContactListPresenter> presenterProvider;
 
     @Override
+    @SuppressWarnings("ConstantConditions")
     public void onAttach(Context context) {
+        AppDelegate appDelegate = ((AppDelegate) getActivity().getApplication());
         ContactListComponent contactListComponent = DaggerContactListComponent.builder()
-                .appComponent(((AppDelegate) getActivity().getApplication()).getAppComponent())
+                .appComponent(appDelegate.getAppComponent())
                 .contactListModule(new ContactListModule())
                 .build();
         contactListComponent.inject(this);
         super.onAttach(context);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contacts_list, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
     }
 
     @Override
@@ -73,21 +70,18 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
         contactsAdapter = new ContactsAdapter(getActivity());
         contactsView.setLayoutManager(new LinearLayoutManager(getContext()));
         contactsView.setAdapter(contactsAdapter);
-
-        presenter.updateContacts();
-    }
-
-    @Override
-    public void onDestroyView() {
-        if (unbinder != null)
-            unbinder.unbind();
-        super.onDestroyView();
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            presenter.refreshContacts();
+        });
     }
 
     @Override
     public void showContacts(@NonNull List<Contact> contacts) {
         if (contactsAdapter != null)
-            contactsAdapter.updateContacts(contacts);
+            DiffUtils.calcualteDuffs(contactsAdapter.getItems(), contacts, (result) -> {
+                contactsAdapter.setItems(contacts);
+                result.dispatchUpdatesTo(contactsAdapter);
+            });
     }
 
     @Override
@@ -95,10 +89,18 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
 
     }
 
+    @Override
+    public void isRefreshing(boolean isRefreshing) {
+        swipeRefreshLayout.setRefreshing(isRefreshing);
+    }
+
     @ProvidePresenter
     ContactListPresenter providePresenter() {
         return presenterProvider.get();
     }
 
-
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_contacts_list;
+    }
 }

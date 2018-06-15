@@ -1,6 +1,5 @@
 package com.example.a65apps.daggerlesson.network;
 
-import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.data.contact.ContactDto;
 import com.example.core.network.BaseContactResponse;
 

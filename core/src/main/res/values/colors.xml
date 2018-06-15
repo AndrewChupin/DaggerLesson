@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Main colors -->
+    <color name="colorPrimary">#384055</color>
+    <color name="colorPrimaryDark">#2D3648</color>
+    <color name="colorAccent">#384055</color>
+
+
     <!-- Text Colors -->
     <color name="text_dark_main">#414141</color>
     <color name="text_dark_secondary">#4E4E4E</color>
@@ -17,4 +24,5 @@
     <color name="main_light_bg">#ECF0F5</color>
     <color name="main_light_description_bg">#DDE1E9</color>
     <color name="main_dark_bg">#000000</color>
+
 </resources>

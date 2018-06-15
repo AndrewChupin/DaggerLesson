@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 
-public class ContactServiceRetroift implements ContactService {
+public class ContactServiceRetrofit implements ContactService {
 
     @NonNull
     private ContactApi contactApi;
@@ -20,7 +20,7 @@ public class ContactServiceRetroift implements ContactService {
     private Mapper<List<ContactDto>, List<Contact>> contactsMapper;
 
     @Inject
-    public ContactServiceRetroift(
+    public ContactServiceRetrofit(
             @NonNull ContactApi contactApi,
             @NonNull Mapper<List<ContactDto>, List<Contact>> contactsMapper) {
         this.contactApi = contactApi;

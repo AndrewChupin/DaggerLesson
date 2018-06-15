@@ -12,6 +12,8 @@ import com.example.a65apps.daggerlesson.network.LoadContactsRequest;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -24,6 +26,7 @@ public class ContactListInteractorDefault implements ContactListInteractor {
     @NonNull
     private TokenRepository tokenRepository;
 
+    @Inject
     public ContactListInteractorDefault(@NonNull ContactService contactService,
                                         @NonNull ContactRepository<Contact, Long> contactRepository,
                                         @NonNull TokenRepository tokenRepository) {
@@ -44,14 +47,8 @@ public class ContactListInteractorDefault implements ContactListInteractor {
         return Completable.defer(() -> contactRepository.deleteAll())
                 .andThen(tokenRepository.findToken(Token.CONTACTS_REQUEST_TOKEN))
                 .flatMap((token) -> contactService.loadContacts(new LoadContactsRequest(token.getValue())))
-                .flatMap((result) -> {
-                    Log.d("Logos", "Data1 " + result);
-                    return contactRepository.insertAll(result).toSingle(() -> result);
-                })
-                .flatMap((result) -> {
-                    Log.d("Logos", "Data2 " + result);
-                    return contactRepository.findAll();
-                });
+                .flatMap((result) -> contactRepository.insertAll(result).toSingle(() -> result))
+                .flatMap((result) -> contactRepository.findAll());
     }
 
     @NonNull
@@ -59,13 +56,7 @@ public class ContactListInteractorDefault implements ContactListInteractor {
     public Single<List<Contact>> updateContactsContacts() {
         return Single.defer(() -> tokenRepository.findToken(Token.CONTACTS_REQUEST_TOKEN))
                 .flatMap((token) -> contactService.loadContacts(new LoadContactsRequest(token.getValue())))
-                .flatMap((result) -> {
-                    Log.d("Logos", "Data1 " + result);
-                    return contactRepository.insertAll(result).toSingle(() -> result);
-                })
-                .flatMap((result) -> {
-                    Log.d("Logos", "Data2 " + result);
-                    return contactRepository.findAll();
-                });
+                .flatMap((result) -> contactRepository.insertAll(result).toSingle(() -> result))
+                .flatMap((result) -> contactRepository.findAll());
     }
 }
