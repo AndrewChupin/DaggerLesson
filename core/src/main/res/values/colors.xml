@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Colors -->
+    <color name="text_dark_main">#414141</color>
+    <color name="text_dark_secondary">#4E4E4E</color>
+    <color name="text_dark_description">#A5A7A7</color>
+
+    <color name="text_light_main">#FFFEFE</color>
+    <color name="text_light_secondary">#ECF0F5</color>
+    <color name="text_light_description">#E1E3E3</color>
+
+
+    <!-- Background colors -->
+    <color name="card_light_bg">#FFFEFE</color>
+    <color name="card_light_description_bg">#E8E8E8</color>
+
+    <color name="main_light_bg">#ECF0F5</color>
+    <color name="main_light_description_bg">#DDE1E9</color>
+    <color name="main_dark_bg">#000000</color>
+</resources>

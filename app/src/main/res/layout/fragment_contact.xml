@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_light_bg"
+    android:padding="@dimen/default_root_bounds_size">
+
+    <LinearLayout
+        android:id="@+id/llTaskContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/contact_horizontal_space"
+        android:layout_marginBottom="@dimen/contact_horizontal_space"
+        android:layout_marginRight="@dimen/contact_vertical_space"
+        android:layout_marginLeft="@dimen/contact_vertical_space"
+        android:paddingLeft="@dimen/contact_vertical_padding"
+        android:paddingRight="@dimen/contact_vertical_padding"
+        android:paddingTop="@dimen/contact_horizontal_padding"
+        android:paddingBottom="@dimen/contact_horizontal_padding"
+        android:background="@drawable/shape_corners_main_light">
+
+
+        <ImageView
+            android:id="@+id/mIvWorkerPhoto"
+            android:layout_width="@dimen/contact_image_width"
+            android:layout_height="@dimen/contact_image_height"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/placeholder_face"/>
+
+
+        <android.support.v4.widget.Space
+            android:layout_width="@dimen/zero_size"
+            android:layout_height="@dimen/default_space_size"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/mTvWorkerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/contact_name_text_size"
+            android:textAlignment="center"
+            android:textColor="@color/text_dark_main"
+            tools:text="Никитин Дмитрий"/>
+
+        <TextView
+            android:id="@+id/mTvWorkerSpecialty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/contact_specialty_text_size"
+            android:textAlignment="center"
+            android:textColor="@color/text_dark_description"
+            tools:text="Разработчик, Менеджер"/>
+
+        <android.support.v4.widget.Space
+            android:layout_width="@dimen/zero_size"
+            android:layout_height="@dimen/default_space_size"
+            android:layout_gravity="center"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mTvWorkerAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_person_outline_dark"
+                android:drawableStart="@drawable/ic_person_outline_dark"
+                android:drawablePadding="@dimen/contact_label_drawable_padding"
+                android:textSize="@dimen/contact_label_text_size"
+                tools:text="5 мин"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="@dimen/default_space_size"
+                android:layout_height="@dimen/zero_size"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/mTvWorkerBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_access_time_dark"
+                android:drawableStart="@drawable/ic_access_time_dark"
+                android:drawablePadding="@dimen/contact_label_drawable_padding"
+                android:textSize="@dimen/contact_label_text_size"
+                tools:text="Basic"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

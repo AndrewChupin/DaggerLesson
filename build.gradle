@@ -12,6 +12,7 @@ buildscript {
             'archComp'         : '1.1.0',
             'livedataTesting'  : '1.1.0',
             'constraint'       : '1.1.0',
+            'glideVersion'     : '4.7.1',
             'room'             : '1.0.0',
             'roomRx'           : '1.0.0',
             'roomTesting'      : '1.0.0',
@@ -66,6 +67,10 @@ buildscript {
                     'moshiGen'         : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
                     'butterknifeCompiler'         : "com.jakewharton:butterknife-compiler:${versions.butterknifeVersion}",
                     'butterknife'      : "com.jakewharton:butterknife:${versions.butterknifeVersion}",
+            ],
+            bumptech : [
+                    'glide'      :"com.github.bumptech.glide:glide:${versions.glideVersion}",
+                    'glideCompiler'      :"com.github.bumptech.glide:compiler:${versions.glideVersion}"
             ],
             hannes : [
                     'adapterDelegate' : "com.hannesdorfmann:adapterdelegates3:${versions.adapterDelegate}"

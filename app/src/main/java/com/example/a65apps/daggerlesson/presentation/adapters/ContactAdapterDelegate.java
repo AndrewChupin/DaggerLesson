@@ -5,8 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.a65apps.daggerlesson.R;
 import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.core.presentation.adapter.BaseViewHolder;
@@ -34,7 +37,11 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
     @NonNull
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-        return new ContactViewHolder(activity.getLayoutInflater().inflate(R.layout.item_contact, parent, false));
+        View view = activity.getLayoutInflater().inflate(R.layout.item_contact, parent, false);
+        view.setOnClickListener((v) -> {
+
+        });
+        return new ContactViewHolder(view);
     }
 
     @Override
@@ -46,6 +53,10 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
 
         @BindView(R.id.contact_name)
         TextView contactName;
+        @BindView(R.id.contact_phone)
+        TextView contactPhone;
+        @BindView(R.id.image_contact)
+        ImageView contactImage;
 
         ContactViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +65,13 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
 
         void bind(Contact contact) {
             contactName.setText(contact.getName());
+            contactPhone.setText(contact.getPhone());
+            Glide.with(itemView.getContext())
+                    .load(contact.getImageUrl())
+                    .apply(RequestOptions.circleCropTransform())
+                    .apply(RequestOptions.placeholderOf(R.drawable.placeholder_face).circleCrop())
+                    .into(contactImage);
+
         }
 
     }

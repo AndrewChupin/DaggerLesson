@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Worker Item -->
+    <drawable name="ic_access_time_dark">@drawable/ic_access_time_black_24dp</drawable>
+    <drawable name="ic_person_outline_dark">@drawable/ic_person_outline_black_24dp</drawable>
+
+</resources>

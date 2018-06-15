@@ -9,13 +9,13 @@ import javax.inject.Inject;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
-public class TokenRepostiryShared implements TokenRepository {
+public class TokenRepositoryShared implements TokenRepository {
 
     @NonNull
     private SharedPreferences tokenPreferences;
 
     @Inject
-    public TokenRepostiryShared(@NonNull SharedPreferences tokenPreferences) {
+    public TokenRepositoryShared(@NonNull SharedPreferences tokenPreferences) {
         this.tokenPreferences = tokenPreferences;
     }
 

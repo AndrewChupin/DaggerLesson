@@ -58,4 +58,26 @@ public final class Contact {
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Contact contact = (Contact) o;
+
+        if (id != contact.id) return false;
+        if (!name.equals(contact.name)) return false;
+        if (!phone.equals(contact.phone)) return false;
+        return imageUrl.equals(contact.imageUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + name.hashCode();
+        result = 31 * result + phone.hashCode();
+        result = 31 * result + imageUrl.hashCode();
+        return result;
+    }
 }

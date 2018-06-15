@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_background_main_light_to_secondary"
+    android:orientation="horizontal"
+    android:padding="@dimen/base_padding">
 
-    <TextView
-        android:id="@+id/contact_name"
+    <ImageView
+        android:id="@+id/image_contact"
+        android:layout_width="@dimen/contact_item_image_width"
+        android:layout_height="@dimen/contact_item_image_height"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/placeholder_face" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/contact_item_horizontal_space"
+        android:layout_marginRight="@dimen/contact_item_horizontal_space"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_main"
+            android:textSize="@dimen/contact_item_name_text_size"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_light"
+            tools:text="Andrew Brown" />
+
+        <TextView
+            android:id="@+id/contact_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="@dimen/contact_item_age_text_size"
+            android:fontFamily="@font/roboto_light"
+            tools:text="31 год" />
+
+    </LinearLayout>
 
 </LinearLayout>

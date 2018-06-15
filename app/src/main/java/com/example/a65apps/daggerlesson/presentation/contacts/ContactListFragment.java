@@ -45,6 +45,7 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
 
     @InjectPresenter
     ContactListPresenter presenter;
+
     @Inject
     Provider<ContactListPresenter> presenterProvider;
 
@@ -95,7 +96,7 @@ public class ContactListFragment extends MvpAppCompatFragment implements Contact
     }
 
     @ProvidePresenter
-    ContactListPresenter providePresetner() {
+    ContactListPresenter providePresenter() {
         return presenterProvider.get();
     }
 

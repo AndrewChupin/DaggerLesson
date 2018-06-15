@@ -44,6 +44,7 @@ dependencies {
     annotationProcessor deps.arello.moxyCompiler
     annotationProcessor deps.square.butterknifeCompiler
     annotationProcessor deps.android.roomCompiler
+    annotationProcessor deps.bumptech.glideCompiler
 
     annotationProcessor deps.google.daggerProcessor
 }

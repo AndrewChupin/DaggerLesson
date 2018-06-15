@@ -9,7 +9,7 @@ import com.example.a65apps.daggerlesson.data.contact.ContactDto;
 import com.example.a65apps.daggerlesson.data.contact.ContactRepository;
 import com.example.a65apps.daggerlesson.data.contact.ContactRepositoryRoom;
 import com.example.a65apps.daggerlesson.data.token.TokenRepository;
-import com.example.a65apps.daggerlesson.data.token.TokenRepostiryShared;
+import com.example.a65apps.daggerlesson.data.token.TokenRepositoryShared;
 import com.example.a65apps.daggerlesson.di.main.FragmentScope;
 import com.example.a65apps.daggerlesson.domain.interactor.contacts.ContactListInteractor;
 import com.example.a65apps.daggerlesson.domain.interactor.contacts.ContactListInteractorDefault;
@@ -38,7 +38,7 @@ public class ContactListModule {
     @Provides
     @FragmentScope
     TokenRepository provideTokenRepository(SharedPreferences sharedPreferences) { // TODO
-        return new TokenRepostiryShared(sharedPreferences);
+        return new TokenRepositoryShared(sharedPreferences);
     }
 
     @Provides

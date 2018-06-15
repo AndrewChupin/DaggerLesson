@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+    <dimen name="default_root_bounds_size">16dp</dimen>
+    <dimen name="helper_fragment_message_text_default">24sp</dimen>
+    <dimen name="default_space_size">8dp</dimen>
+    <dimen name="zero_size">0dp</dimen>
+    <dimen name="base_padding">16dp</dimen>
+    
+</resources>
