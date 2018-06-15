@@ -20,7 +20,7 @@ public class NetworkModule {
     @Singleton
     public ContactApi provideApi() {
         return new Retrofit.Builder()
-                .baseUrl("http://192.168.65.255")
+                .baseUrl("http://192.168.65.112:5000")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create(new Moshi.Builder().build()))
                 .build()

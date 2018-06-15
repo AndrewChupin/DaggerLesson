@@ -47,9 +47,9 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
         @BindView(R.id.contact_name)
         TextView contactName;
 
-        public ContactViewHolder(@NonNull View itemView) {
+        ContactViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void bind(Contact contact) {
