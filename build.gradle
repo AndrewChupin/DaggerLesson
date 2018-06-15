@@ -28,6 +28,8 @@ buildscript {
             'mockitoKotlin'    : '1.5.0',
             'robolectric'      : '3.6.1',
             'adapterDelegate'  : '3.0.1',
+            'moxyVersion'      : '1.5.5',
+            'butterknifeVersion'      : '8.8.1',
             'sourceCompat'     : JavaVersion.VERSION_1_8,
             'targetCompat'     : JavaVersion.VERSION_1_8
     ]
@@ -62,9 +64,16 @@ buildscript {
                     'retrofitRxAdapter': "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${versions.retrofitRxAdapter}",
                     'moshi'            : "com.squareup.moshi:moshi-kotlin:${versions.moshi}",
                     'moshiGen'         : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
+                    'butterknifeCompiler'         : "com.jakewharton:butterknife-compiler:${versions.butterknifeVersion}",
+                    'butterknife'      : "com.jakewharton:butterknife:${versions.butterknifeVersion}",
             ],
             hannes : [
                     'adapterDelegate' : "com.hannesdorfmann:adapterdelegates3:${versions.adapterDelegate}"
+            ],
+            arello : [
+                    'moxy' : "com.arello-mobile:moxy:${versions.moxyVersion}",
+                    'moxyCompiler' : "com.arello-mobile:moxy-compiler:${versions.moxyVersion}",
+                    'moxyAppCompat' : "com.arello-mobile:moxy-app-compat:${versions.moxyVersion}"
             ],
             test     : [
                     'junit'          : "junit:junit:${versions.junit}",
@@ -76,7 +85,6 @@ buildscript {
                     'roomTesting'    : "android.arch.persistence.room:testing:${versions.roomTesting}",
             ]
     ]
-
 
     repositories {
         google()

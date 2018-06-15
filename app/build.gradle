@@ -39,5 +39,10 @@ dependencies {
 
     implementation project(":core")
 
+    api deps.arello.moxy
+    api deps.arello.moxyAppCompat
+    annotationProcessor deps.arello.moxyCompiler
+    annotationProcessor deps.square.butterknifeCompiler
+
     annotationProcessor deps.google.daggerProcessor
 }

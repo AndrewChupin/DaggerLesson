@@ -36,6 +36,11 @@ dependencies {
     api deps.android.roomRuntime
     api deps.android.roomRx
 
+    api deps.reactivex.rxJava
+    api deps.reactivex.rxAndroid
+
+    api deps.hannes.adapterDelegate
+
     api deps.google.dagger
     annotationProcessor deps.google.daggerProcessor
 
@@ -43,4 +48,7 @@ dependencies {
     api deps.square.okhttp
     api deps.square.retrofitRxAdapter
     api deps.square.moshiConverter
+
+    api deps.square.butterknife
+    annotationProcessor deps.square.butterknifeCompiler
 }

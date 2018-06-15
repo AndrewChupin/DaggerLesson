@@ -12,7 +12,7 @@ import io.reactivex.Completable;
 import io.reactivex.Single;
 
 
-public class ContactRepositoryRoom implements ContactRepository<Contact, Long> {
+public final class ContactRepositoryRoom implements ContactRepository<Contact, Long> {
 
     @NonNull
     private AppDatabase appDatabase;

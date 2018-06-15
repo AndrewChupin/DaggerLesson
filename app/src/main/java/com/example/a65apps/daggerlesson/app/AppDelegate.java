@@ -1,6 +1,7 @@
 package com.example.a65apps.daggerlesson.app;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 
 import com.example.a65apps.daggerlesson.di.core.AppComponent;
 import com.example.a65apps.daggerlesson.di.core.AppModule;
@@ -10,6 +11,7 @@ import com.example.a65apps.daggerlesson.di.core.DataBaseModule;
 
 public class AppDelegate extends Application {
 
+    @NonNull
     private AppComponent appComponent;
 
     @Override
