@@ -13,4 +13,5 @@ public class ContactsInfoDtoToCommonMapper implements Mapper<ContactInfoDto, Con
     public ContactInfo map(ContactInfoDto object) {
         return new ContactInfo(object.getInfo());
     }
+
 }

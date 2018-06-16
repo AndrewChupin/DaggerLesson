@@ -3,10 +3,10 @@ package com.example.a65apps.daggerlesson.app;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
-import com.example.a65apps.daggerlesson.di.core.AppComponent;
-import com.example.a65apps.daggerlesson.di.core.AppModule;
-import com.example.a65apps.daggerlesson.di.core.DaggerAppComponent;
-import com.example.a65apps.daggerlesson.di.core.DataBaseModule;
+import com.example.a65apps.daggerlesson.di.common.AppComponent;
+import com.example.core.di.module.AppModule;
+import com.example.a65apps.daggerlesson.di.common.DaggerAppComponent;
+import com.example.a65apps.daggerlesson.di.common.DataBaseModule;
 
 
 public class AppDelegate extends Application {

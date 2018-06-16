@@ -20,7 +20,7 @@ public class ContactInteractorDefault implements ContactInteractor {
 
     @Override
     public Single<ContactInfo> loadContactInfo(long contactId) {
-        return contactService.loadContactInfo(new ContactsInfoRequest(contactId));
+        return Single.defer(() -> contactService.loadContactInfo(new ContactsInfoRequest(contactId)));
     }
 
 }

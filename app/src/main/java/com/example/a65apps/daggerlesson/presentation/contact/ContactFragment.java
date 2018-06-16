@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -16,8 +17,11 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.a65apps.daggerlesson.R;
 import com.example.a65apps.daggerlesson.app.AppDelegate;
 import com.example.a65apps.daggerlesson.data.contact.Contact;
+import com.example.a65apps.daggerlesson.data.contact_info.ContactInfo;
 import com.example.a65apps.daggerlesson.di.contact.ContactComponent;
+import com.example.a65apps.daggerlesson.presentation.common.BaseToolbarFragment;
 import com.example.core.presentation.BaseFragment;
+import com.example.core.presentation.BaseScreenStates;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -25,19 +29,9 @@ import javax.inject.Provider;
 import butterknife.BindView;
 
 
-public class ContactFragment extends BaseFragment implements ContactView {
+public class ContactFragment extends BaseToolbarFragment implements ContactView {
 
     public static final String CONTACT = "CONTACT";
-
-    public static Fragment newInstance(Contact contact) {
-        ContactFragment contactFragment = new ContactFragment();
-        Bundle bundle = new Bundle();
-
-        bundle.putParcelable(CONTACT, contact);
-        contactFragment.setArguments(bundle);
-
-        return contactFragment;
-    }
 
     @InjectPresenter
     public ContactPresenter contactPresenter;
@@ -50,6 +44,20 @@ public class ContactFragment extends BaseFragment implements ContactView {
     TextView contactName;
     @BindView(R.id.text_contact_phone)
     TextView contactPhone;
+    @BindView(R.id.text_contact_info)
+    TextView textContactInfo;
+    @BindView(R.id.progress_info_loading)
+    ProgressBar progressInfoLoading;
+
+    public static Fragment newInstance(Contact contact) {
+        ContactFragment contactFragment = new ContactFragment();
+        Bundle bundle = new Bundle();
+
+        bundle.putParcelable(CONTACT, contact);
+        contactFragment.setArguments(bundle);
+
+        return contactFragment;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -83,5 +91,32 @@ public class ContactFragment extends BaseFragment implements ContactView {
     @ProvidePresenter
     public ContactPresenter providePresenter() {
         return contactPresenterProvider.get();
+    }
+
+    @Override
+    public void showContactInfo(@NonNull ContactInfo info) {
+        textContactInfo.setText(info.getInfo());
+    }
+
+    @Override
+    public void changeState(@NonNull String state) {
+        switch (state) {
+            case BaseScreenStates.LOADING: {
+                textContactInfo.setVisibility(View.GONE);
+                progressInfoLoading.setVisibility(View.VISIBLE);
+                break;
+            }
+            case BaseScreenStates.DATA: {
+                textContactInfo.setVisibility(View.VISIBLE);
+                progressInfoLoading.setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        contactPresenter.onBackPressed();
+        return true;
     }
 }

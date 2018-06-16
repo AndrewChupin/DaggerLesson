@@ -19,8 +19,23 @@ public class ContactsDtoToCommonMapper implements Mapper<List<ContactDto>, List<
     public List<Contact> map(@NonNull List<ContactDto> object) {
         List<Contact> contacts = new ArrayList<>();
         for (ContactDto contactDto: object) {
-            contacts.add(new Contact(contactDto.getId(), contactDto.getName(),contactDto.getPhone(), contactDto.getImageUrl()));
+            if (contactDto.getId() == null) {
+                continue;
+            }
+
+            String name = contactDto.getName() != null
+                    ? contactDto.getName()
+                    : "";
+            String phone = contactDto.getPhone() != null
+                    ? contactDto.getPhone()
+                    : "";
+            String imageUrl = contactDto.getImageUrl() != null
+                    ? contactDto.getImageUrl()
+                    : "";
+
+            contacts.add(new Contact(contactDto.getId(), name, phone, imageUrl));
         }
+
         return contacts;
     }
 }

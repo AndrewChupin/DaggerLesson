@@ -1,7 +1,7 @@
 package com.example.a65apps.daggerlesson.di.contact;
 
 
-import com.example.a65apps.daggerlesson.di.core.MapperModule;
+import com.example.a65apps.daggerlesson.di.common.MapperModule;
 import com.example.a65apps.daggerlesson.presentation.contact.ContactFragment;
 import com.example.core.di.scope.FragmentScope;
 

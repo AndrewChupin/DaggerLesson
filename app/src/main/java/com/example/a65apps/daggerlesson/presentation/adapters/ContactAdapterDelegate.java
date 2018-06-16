@@ -40,9 +40,6 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
     @Override
     protected BaseViewHolder onCreateViewHolder(ViewGroup parent) {
         View view = activity.getLayoutInflater().inflate(R.layout.item_contact, parent, false);
-        view.setOnClickListener((v) -> {
-
-        });
         return new ContactViewHolder(view);
     }
 

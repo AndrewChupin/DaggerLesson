@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.core;
+package com.example.core.di.module;
 
 import android.app.Application;
 import android.content.Context;

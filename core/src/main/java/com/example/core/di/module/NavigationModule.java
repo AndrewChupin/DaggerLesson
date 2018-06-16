@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.core;
+package com.example.core.di.module;
 
 import javax.inject.Singleton;
 

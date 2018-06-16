@@ -1,7 +1,7 @@
 package com.example.a65apps.daggerlesson.di.main;
 
 
-import com.example.a65apps.daggerlesson.di.core.AppComponent;
+import com.example.a65apps.daggerlesson.di.common.AppComponent;
 import com.example.a65apps.daggerlesson.presentation.MainActivity;
 import com.example.core.di.scope.ActivityScope;
 

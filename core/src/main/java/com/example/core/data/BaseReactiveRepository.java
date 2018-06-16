@@ -1,6 +1,7 @@
 package com.example.core.data;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface BaseReactiveRepository<Entity, Id> {
     @NonNull
     Single<List<Entity>> findAll();
 
-    @NonNull
+    @Nullable
     Single<Entity> findById(@NonNull Id id);
 
 }

@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.core;
+package com.example.a65apps.daggerlesson.di.common;
 
 import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.data.contact.ContactDto;

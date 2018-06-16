@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.core;
+package com.example.a65apps.daggerlesson.di.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,8 +6,9 @@ import android.content.SharedPreferences;
 import com.example.a65apps.daggerlesson.app.AppDatabase;
 import com.example.a65apps.daggerlesson.app.AppDelegate;
 import com.example.a65apps.daggerlesson.di.contact.ContactComponent;
-import com.example.a65apps.daggerlesson.di.contact.ContactModule;
 import com.example.a65apps.daggerlesson.network.ContactApi;
+import com.example.core.di.module.AppModule;
+import com.example.core.di.module.NavigationModule;
 
 import javax.inject.Singleton;
 
@@ -19,15 +20,15 @@ import ru.terrakok.cicerone.Router;
 @Singleton
 @Component(modules = {AppModule.class, DataBaseModule.class, NetworkModule.class, NavigationModule.class})
 public interface AppComponent {
-    // FOR DEPENDENCY COMPONENT
+    // For dependency component
     SharedPreferences provideShared();
     AppDatabase provideAppDatabase();
     ContactApi provideContactApi();
-    Context provideContext();
     Router provideRouter();
     NavigatorHolder provideNavigatorHolder();
 
-    void inject(AppDelegate appDelegate);
-
+    // For subcomponent component
     ContactComponent plusContactComponent();
+
+    void inject(AppDelegate appDelegate);
 }

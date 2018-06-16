@@ -1,63 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_light_bg"
-    android:padding="@dimen/default_root_bounds_size">
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/contact_horizontal_space"
-        android:layout_marginBottom="@dimen/contact_horizontal_space"
-        android:layout_marginRight="@dimen/contact_vertical_space"
-        android:layout_marginLeft="@dimen/contact_vertical_space"
-        android:paddingLeft="@dimen/contact_vertical_padding"
-        android:paddingRight="@dimen/contact_vertical_padding"
-        android:paddingTop="@dimen/contact_horizontal_padding"
-        android:paddingBottom="@dimen/contact_horizontal_padding"
-        android:background="@drawable/shape_corners_main_light">
+        android:padding="@dimen/default_root_bounds_size">
 
-
-        <ImageView
-            android:id="@+id/image_contact"
-            android:layout_width="@dimen/contact_image_width"
-            android:layout_height="@dimen/contact_image_height"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/placeholder_face"/>
-
-
-        <android.support.v4.widget.Space
-            android:layout_width="@dimen/zero_size"
-            android:layout_height="@dimen/default_space_size"
-            android:layout_gravity="center"/>
-
-
-        <TextView
-            android:id="@+id/text_contact_name"
+        <LinearLayout
+            android:id="@+id/layout_common_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/contact_name_text_size"
-            android:textAlignment="center"
-            android:textColor="@color/text_dark_main"
-            android:fontFamily="@font/roboto_light"
-            tools:text="Никитин Дмитрий"/>
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/contact_horizontal_space"
+            android:layout_marginBottom="@dimen/contact_horizontal_space"
+            android:layout_marginRight="@dimen/contact_vertical_space"
+            android:layout_marginLeft="@dimen/contact_vertical_space"
+            android:paddingLeft="@dimen/contact_vertical_padding"
+            android:paddingRight="@dimen/contact_vertical_padding"
+            android:paddingTop="@dimen/contact_horizontal_padding"
+            android:paddingBottom="@dimen/contact_horizontal_padding"
+            android:background="@drawable/shape_corners_main_light">
 
-        <TextView
-            android:id="@+id/text_contact_phone"
+
+            <ImageView
+                android:id="@+id/image_contact"
+                android:layout_width="@dimen/contact_image_width"
+                android:layout_height="@dimen/contact_image_height"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/placeholder_face"/>
+
+
+            <android.support.v4.widget.Space
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="@dimen/default_space_size"
+                android:layout_gravity="center"/>
+
+
+            <TextView
+                android:id="@+id/text_contact_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/contact_name_text_size"
+                android:textAlignment="center"
+                android:textColor="@color/text_dark_main"
+                android:fontFamily="@font/roboto_light"
+                tools:text="Никитин Дмитрий"/>
+
+            <TextView
+                android:id="@+id/text_contact_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/contact_specialty_text_size"
+                android:textAlignment="center"
+                android:textColor="@color/text_dark_description"
+                android:fontFamily="@font/roboto_regular"
+                tools:text="+79042797431"/>
+
+        </LinearLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/contact_specialty_text_size"
-            android:textAlignment="center"
-            android:textColor="@color/text_dark_description"
-            android:fontFamily="@font/roboto_regular"
-            tools:text="+79042797431"/>
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progress_info_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/text_contact_info"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:text="@string/app_name"/>
+
+        </FrameLayout>
+
 
     </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

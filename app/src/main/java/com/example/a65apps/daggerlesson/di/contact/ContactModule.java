@@ -9,6 +9,7 @@ import com.example.core.di.scope.FragmentScope;
 
 import dagger.Module;
 import dagger.Provides;
+import ru.terrakok.cicerone.Router;
 
 
 @Module
@@ -28,8 +29,8 @@ public class ContactModule {
 
     @Provides
     @FragmentScope
-    public ContactPresenter getContactPresenter() {
-        return new ContactPresenter();
+    public ContactPresenter getContactPresenter(ContactInteractor contactInteractor, Router router) {
+        return new ContactPresenter(contactInteractor, router);
     }
 
 }

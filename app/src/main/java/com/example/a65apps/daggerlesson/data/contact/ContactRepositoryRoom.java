@@ -1,6 +1,7 @@
 package com.example.a65apps.daggerlesson.data.contact;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.example.a65apps.daggerlesson.app.AppDatabase;
 
@@ -31,18 +32,18 @@ public final class ContactRepositoryRoom implements ContactRepository<Contact, L
     @NonNull
     @Override
     public Completable deleteAll() {
-        return Completable.fromAction(appDatabase.getContactsDao()::deleteAll);
+        return Completable.fromAction(() -> appDatabase.getContactsDao().deleteAll());
     }
 
     @NonNull
     @Override
     public Single<List<Contact>> findAll() {
-        return Single.fromCallable(() -> appDatabase.getContactsDao().findAll());
+        return appDatabase.getContactsDao().findAll();
     }
 
-    @NonNull
+    @Nullable
     @Override
     public Single<Contact> findById(@NonNull Long id) {
-        return Single.fromCallable(() -> appDatabase.getContactsDao().findById(id));
+        return appDatabase.getContactsDao().findById(id);
     }
 }

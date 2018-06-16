@@ -9,6 +9,9 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 
 @Dao
 public interface ContactDao {
@@ -18,11 +21,11 @@ public interface ContactDao {
 
     @Query("SELECT * FROM contacts")
     @NonNull
-    List<Contact> findAll();
+    Single<List<Contact>> findAll();
 
     @Query("SELECT * FROM contacts WHERE id = :id")
     @Nullable
-    Contact findById(long id);
+    Single<Contact> findById(long id);
 
     @Query("DELETE FROM contacts")
     void deleteAll();

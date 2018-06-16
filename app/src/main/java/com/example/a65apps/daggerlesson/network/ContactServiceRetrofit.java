@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 
+
 public class ContactServiceRetrofit implements ContactService {
 
     @NonNull
@@ -36,14 +37,14 @@ public class ContactServiceRetrofit implements ContactService {
     @Override
     @NonNull
     public Single<List<Contact>> loadContacts(@NonNull LoadContactsRequest request) {
-        return Single.defer(() -> contactApi.getContacts(request.getToken())
-                .flatMap((response) -> Single.just(contactsMapper.map(response.getDataType()))));
+        return contactApi.getContacts(request.getToken())
+                .flatMap((response) -> Single.just(contactsMapper.map(response.getDataType())));
     }
 
     @Override
     @NonNull
     public Single<ContactInfo> loadContactInfo(@NonNull ContactsInfoRequest request) {
-        return Single.defer(() -> contactApi.getContactInfo(request.getContactId())
-                .flatMap((response) -> Single.just(contactInfoMapper.map(response.getDataType()))));
+        return contactApi.getContactInfo(request.getContactId())
+                .flatMap((response) -> Single.just(contactInfoMapper.map(response.getDataType())));
     }
 }

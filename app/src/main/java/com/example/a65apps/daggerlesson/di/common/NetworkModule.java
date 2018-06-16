@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.core;
+package com.example.a65apps.daggerlesson.di.common;
 
 import com.example.a65apps.daggerlesson.network.ContactApi;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
