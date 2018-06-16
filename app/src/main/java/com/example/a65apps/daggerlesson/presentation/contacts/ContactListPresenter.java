@@ -43,7 +43,7 @@ public class ContactListPresenter extends BasePresenter<ContactListView> {
         Disposable disposable = contactListInteractor.getContacts()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((result) -> getViewState().showContacts(result));
+                .subscribe((result) -> getViewState().showContacts(result), Throwable::printStackTrace);
         disposeOnDelete(disposable);
     }
 
@@ -52,7 +52,7 @@ public class ContactListPresenter extends BasePresenter<ContactListView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally(() -> getViewState().isRefreshing(false))
-                .subscribe((result) -> getViewState().showContacts(result));
+                .subscribe((result) -> getViewState().showContacts(result), Throwable::printStackTrace);
         disposeOnDelete(disposable);
     }
 
@@ -60,7 +60,7 @@ public class ContactListPresenter extends BasePresenter<ContactListView> {
         Disposable disposable = contactListInteractor.updateContactsContacts()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((result) -> getViewState().showContacts(result));
+                .subscribe((result) -> getViewState().showContacts(result), Throwable::printStackTrace);
         disposeOnDelete(disposable);
     }
 

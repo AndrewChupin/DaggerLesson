@@ -75,9 +75,7 @@ public class ContactListFragment extends BaseFragment implements ContactListView
         contactsAdapter = new ContactsAdapter(getActivity(), this);
         contactsView.setLayoutManager(new LinearLayoutManager(getContext()));
         contactsView.setAdapter(contactsAdapter);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            presenter.refreshContacts();
-        });
+        swipeRefreshLayout.setOnRefreshListener(() -> presenter.refreshContacts());
     }
 
     @Override

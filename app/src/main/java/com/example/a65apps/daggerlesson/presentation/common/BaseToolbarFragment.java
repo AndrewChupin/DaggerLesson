@@ -22,19 +22,23 @@ public abstract class BaseToolbarFragment extends BaseFragment implements BackPr
         super.onViewCreated(view, savedInstanceState);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
 
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.setSupportActionBar(toolbar);
-        appCompatActivity.getSupportActionBar()
-                .setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.getSupportActionBar()
-                .setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.setTitle("Blablabla");
+        if (getActivity() instanceof AppCompatActivity) {
+            AppCompatActivity activity = (AppCompatActivity) getActivity();
+            activity.setSupportActionBar(toolbar);
+
+            if (activity.getSupportActionBar() == null) {
+                return;
+            }
+
+            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            activity.getSupportActionBar().setTitle(getTitle());
+        }
     }
-
-
 
     public boolean onBackPressed() {
         return false;
     }
 
+    public abstract String getTitle();
 }

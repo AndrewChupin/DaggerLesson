@@ -20,7 +20,6 @@ import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.data.contact_info.ContactInfo;
 import com.example.a65apps.daggerlesson.di.contact.ContactComponent;
 import com.example.a65apps.daggerlesson.presentation.common.BaseToolbarFragment;
-import com.example.core.presentation.BaseFragment;
 import com.example.core.presentation.BaseScreenStates;
 
 import javax.inject.Inject;
@@ -118,5 +117,10 @@ public class ContactFragment extends BaseToolbarFragment implements ContactView 
     public boolean onBackPressed() {
         contactPresenter.onBackPressed();
         return true;
+    }
+
+    @Override
+    public String getTitle() {
+        return getString(R.string.contact_title);
     }
 }

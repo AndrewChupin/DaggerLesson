@@ -1,46 +1,53 @@
-package com.example.a65apps.daggerlesson.presentation;
+package com.example.a65apps.daggerlesson.presentation.main;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.a65apps.daggerlesson.app.AppDelegate;
-import com.example.a65apps.daggerlesson.di.main.DaggerMainComponent;
 import com.example.a65apps.daggerlesson.di.main.MainComponent;
-import com.example.a65apps.daggerlesson.presentation.common.MainNavigator;
-import com.example.a65apps.daggerlesson.presentation.contacts.ContactListFragment;
+import com.example.a65apps.daggerlesson.di.main.MainModule;
 import com.example.core.presentation.BackPressedDelegate;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
+import ru.terrakok.cicerone.Navigator;
 import ru.terrakok.cicerone.NavigatorHolder;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     @Inject
-    public NavigatorHolder navigatorHolder;
+    NavigatorHolder navigatorHolder;
+    @Inject
+    Navigator navigator;
+    @Inject
+    Provider<MainPresenter> presenterProvider;
+    @InjectPresenter
+    MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppDelegate appDelegate = (AppDelegate) getApplication();
-        MainComponent mainComponent = DaggerMainComponent.builder()
-                .appComponent(appDelegate.getAppComponent())
-                .build();
+        MainComponent mainComponent = appDelegate.getAppComponent()
+                .plusMainComponent(new MainModule(this, getSupportFragmentManager()));
         mainComponent.inject(this);
 
         super.onCreate(savedInstanceState);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new ContactListFragment())
-                .commit(); // TODO
+        if (savedInstanceState == null) {
+            presenter.onScreenReady();
+        }
     }
 
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        navigatorHolder.setNavigator(new MainNavigator(this, getSupportFragmentManager(), android.R.id.content));
+        navigatorHolder.setNavigator(navigator);
     }
 
     @Override
@@ -67,5 +74,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         super.onBackPressed();
+    }
+
+    @ProvidePresenter
+    MainPresenter providePresenter() {
+        return presenterProvider.get();
     }
 }
