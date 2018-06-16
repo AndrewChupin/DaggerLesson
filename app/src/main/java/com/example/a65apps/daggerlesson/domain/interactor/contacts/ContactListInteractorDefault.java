@@ -1,14 +1,13 @@
 package com.example.a65apps.daggerlesson.domain.interactor.contacts;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.data.contact.ContactRepository;
 import com.example.a65apps.daggerlesson.data.token.Token;
 import com.example.a65apps.daggerlesson.data.token.TokenRepository;
 import com.example.a65apps.daggerlesson.network.ContactService;
-import com.example.a65apps.daggerlesson.network.LoadContactsRequest;
+import com.example.a65apps.daggerlesson.network.requests.LoadContactsRequest;
 
 import java.util.List;
 

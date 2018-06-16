@@ -6,6 +6,8 @@ import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.data.contact.ContactDto;
 import com.example.a65apps.daggerlesson.data.contact_info.ContactInfo;
 import com.example.a65apps.daggerlesson.data.contact_info.ContactInfoDto;
+import com.example.a65apps.daggerlesson.network.requests.ContactsInfoRequest;
+import com.example.a65apps.daggerlesson.network.requests.LoadContactsRequest;
 import com.example.core.domain.Mapper;
 
 import java.util.List;

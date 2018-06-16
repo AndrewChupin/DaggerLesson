@@ -2,7 +2,7 @@ package com.example.a65apps.daggerlesson.domain.interactor.contact;
 
 import com.example.a65apps.daggerlesson.data.contact_info.ContactInfo;
 import com.example.a65apps.daggerlesson.network.ContactService;
-import com.example.a65apps.daggerlesson.network.ContactsInfoRequest;
+import com.example.a65apps.daggerlesson.network.requests.ContactsInfoRequest;
 
 import javax.inject.Inject;
 

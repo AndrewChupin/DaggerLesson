@@ -1,6 +1,5 @@
 package com.example.a65apps.daggerlesson.di.main;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -30,7 +29,7 @@ public class MainModule {
 
     @Provides
     @ActivityScope
-    public MainPresenter providePresetner(Router router) {
+    public MainPresenter providePresenter(Router router) {
         return new MainPresenter(router);
     }
 

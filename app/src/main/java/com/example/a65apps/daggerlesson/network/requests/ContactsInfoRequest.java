@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.network;
+package com.example.a65apps.daggerlesson.network.requests;
 
 
 public class ContactsInfoRequest {
