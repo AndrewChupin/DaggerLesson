@@ -17,10 +17,6 @@ public class AppDelegate extends Application {
 
     @Nullable
     private AppComponent appComponent;
-    @Nullable
-    private ContactComponent contactComponent;
-    @Nullable
-    private MainComponent mainComponent;
 
     @Override
     public void onCreate() {
@@ -44,27 +40,4 @@ public class AppDelegate extends Application {
         return appComponent;
     }
 
-    @NonNull
-    public MainComponent createMainComponent(MainModule mainModule) {
-        if (mainComponent == null) {
-            mainComponent = getAppComponent().plusMainComponent(mainModule);
-        }
-        return mainComponent;
-    }
-
-    public void destroyMainComponent() {
-        mainComponent = null;
-    }
-
-    @NonNull
-    public ContactComponent createContactComponent() {
-        if (contactComponent == null) {
-            contactComponent = getAppComponent().plusContactComponent();
-        }
-        return contactComponent;
-    }
-
-    public void destroyContactComponent() {
-        mainComponent = null;
-    }
 }

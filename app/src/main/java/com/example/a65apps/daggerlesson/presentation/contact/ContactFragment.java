@@ -61,16 +61,10 @@ public class ContactFragment extends BaseToolbarFragment implements ContactView 
     @Override
     public void onAttach(Context context) {
         AppDelegate appDelegate = (AppDelegate) getActivity().getApplication();
-        ContactComponent contactComponent = appDelegate.createContactComponent();
+        ContactComponent contactComponent = appDelegate.getAppComponent()
+                .plusContactComponent();
         contactComponent.inject(this);
         super.onAttach(context);
-    }
-
-    @Override
-    public void onDestroy() {
-        AppDelegate appDelegate = (AppDelegate) getActivity().getApplication();
-        appDelegate.destroyMainComponent();
-        super.onDestroy();
     }
 
     @Override

@@ -33,8 +33,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppDelegate appDelegate = (AppDelegate) getApplication();
-        MainModule mainModule = new MainModule(this, getSupportFragmentManager());
-        MainComponent mainComponent = appDelegate.createMainComponent(mainModule);
+        MainComponent mainComponent = appDelegate.getAppComponent()
+                .plusMainComponent(new MainModule(this, getSupportFragmentManager()));
         mainComponent.inject(this);
 
         super.onCreate(savedInstanceState);
@@ -54,13 +54,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     protected void onPause() {
         navigatorHolder.removeNavigator();
         super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        AppDelegate appDelegate = (AppDelegate) getApplication();
-        appDelegate.destroyMainComponent();
-        super.onDestroy();
     }
 
     @Override
