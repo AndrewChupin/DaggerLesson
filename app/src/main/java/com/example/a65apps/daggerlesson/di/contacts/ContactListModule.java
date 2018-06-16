@@ -1,26 +1,17 @@
 package com.example.a65apps.daggerlesson.di.contacts;
 
 
-import android.content.SharedPreferences;
-
-import com.example.a65apps.daggerlesson.app.AppDatabase;
 import com.example.a65apps.daggerlesson.data.contact.Contact;
-import com.example.a65apps.daggerlesson.data.contact.ContactDto;
 import com.example.a65apps.daggerlesson.data.contact.ContactRepository;
 import com.example.a65apps.daggerlesson.data.contact.ContactRepositoryRoom;
 import com.example.a65apps.daggerlesson.data.token.TokenRepository;
 import com.example.a65apps.daggerlesson.data.token.TokenRepositoryShared;
-import com.example.a65apps.daggerlesson.di.main.FragmentScope;
 import com.example.a65apps.daggerlesson.domain.interactor.contacts.ContactListInteractor;
 import com.example.a65apps.daggerlesson.domain.interactor.contacts.ContactListInteractorDefault;
-import com.example.a65apps.daggerlesson.domain.mapper.contact.ContactsDtoToCommonMapper;
-import com.example.a65apps.daggerlesson.network.ContactApi;
 import com.example.a65apps.daggerlesson.network.ContactService;
 import com.example.a65apps.daggerlesson.network.ContactServiceRetrofit;
 import com.example.a65apps.daggerlesson.presentation.contacts.ContactListPresenter;
-import com.example.core.domain.Mapper;
-
-import java.util.List;
+import com.example.core.di.scope.FragmentScope;
 
 import dagger.Module;
 import dagger.Provides;
@@ -32,35 +23,26 @@ public class ContactListModule {
 
     @Provides
     @FragmentScope
-    Mapper<List<ContactDto>, List<Contact>> provideMapper() {
-        return new ContactsDtoToCommonMapper();
+    TokenRepository provideTokenRepository(TokenRepositoryShared tokenRepositoryShared) {
+        return tokenRepositoryShared;
     }
 
     @Provides
     @FragmentScope
-    TokenRepository provideTokenRepository(SharedPreferences sharedPreferences) {
-        return new TokenRepositoryShared(sharedPreferences);
+    ContactRepository<Contact, Long> provideContactsRepository(ContactRepositoryRoom contactRepositoryRoom) {
+        return contactRepositoryRoom;
     }
 
     @Provides
     @FragmentScope
-    ContactRepository<Contact, Long> provideContactsRepository(AppDatabase appDatabase) {
-        return new ContactRepositoryRoom(appDatabase);
+    ContactService provideContactService(ContactServiceRetrofit serviceRetrofit) {
+        return serviceRetrofit;
     }
 
     @Provides
     @FragmentScope
-    ContactService provideContactService(ContactApi contactApi, Mapper<List<ContactDto>, List<Contact>> mapper) {
-        return new ContactServiceRetrofit(contactApi, mapper);
-    }
-
-    @Provides
-    @FragmentScope
-    ContactListInteractor provideContactInteractor(
-            ContactRepository<Contact, Long> contactRepository,
-            ContactService service,
-            TokenRepository tokenRepository) {
-        return new ContactListInteractorDefault(service, contactRepository, tokenRepository);
+    ContactListInteractor provideContactInteractor(ContactListInteractorDefault interactorDefault) {
+        return interactorDefault;
     }
 
     @Provides

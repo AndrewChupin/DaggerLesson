@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import com.example.a65apps.daggerlesson.app.AppDatabase;
 import com.example.a65apps.daggerlesson.app.AppDelegate;
+import com.example.a65apps.daggerlesson.di.contact.ContactComponent;
+import com.example.a65apps.daggerlesson.di.contact.ContactModule;
 import com.example.a65apps.daggerlesson.network.ContactApi;
 
 import javax.inject.Singleton;
@@ -26,4 +28,6 @@ public interface AppComponent {
     NavigatorHolder provideNavigatorHolder();
 
     void inject(AppDelegate appDelegate);
+
+    ContactComponent plusContactComponent();
 }

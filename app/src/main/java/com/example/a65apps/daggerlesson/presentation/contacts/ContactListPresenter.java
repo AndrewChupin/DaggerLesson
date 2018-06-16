@@ -1,9 +1,11 @@
 package com.example.a65apps.daggerlesson.presentation.contacts;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.example.a65apps.daggerlesson.data.contact.Contact;
 import com.example.a65apps.daggerlesson.domain.interactor.contacts.ContactListInteractor;
 import com.example.a65apps.daggerlesson.presentation.common.Screens;
 import com.example.core.presentation.BasePresenter;
@@ -62,8 +64,8 @@ public class ContactListPresenter extends BasePresenter<ContactListView> {
         disposeOnDelete(disposable);
     }
 
-    void contactCellClicked(long contactId) {
-        router.navigateTo(Screens.SCREEN_CONTACT);
+    void contactCellClicked(Contact contact) {
+        router.navigateTo(Screens.SCREEN_CONTACT, contact);
     }
 
 }

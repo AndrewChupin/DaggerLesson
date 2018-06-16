@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.main;
+package com.example.core.di.scope;
 
 import javax.inject.Scope;
 

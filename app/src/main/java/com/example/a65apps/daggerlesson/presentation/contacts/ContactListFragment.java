@@ -111,6 +111,6 @@ public class ContactListFragment extends BaseFragment implements ContactListView
 
     @Override
     public void onContactCellClicked(@NonNull Contact contact) {
-        presenter.contactCellClicked(contact.getId());
+        presenter.contactCellClicked(contact);
     }
 }

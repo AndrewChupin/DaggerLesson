@@ -3,10 +3,12 @@ package com.example.a65apps.daggerlesson.data.contact;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "contacts")
-public final class Contact {
+public final class Contact implements Parcelable {
 
     @PrimaryKey
     private final long id;
@@ -29,6 +31,14 @@ public final class Contact {
         this.phone = phone;
         this.imageUrl = imageUrl;
     }
+
+    protected Contact(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        phone = in.readString();
+        imageUrl = in.readString();
+    }
+
 
     public long getId() {
         return id;
@@ -79,5 +89,31 @@ public final class Contact {
         result = 31 * result + phone.hashCode();
         result = 31 * result + imageUrl.hashCode();
         return result;
+    }
+
+
+    public static final Creator<Contact> CREATOR = new Creator<Contact>() {
+        @Override
+        public Contact createFromParcel(Parcel in) {
+            return new Contact(in);
+        }
+
+        @Override
+        public Contact[] newArray(int size) {
+            return new Contact[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeString(phone);
+        dest.writeString(imageUrl);
     }
 }

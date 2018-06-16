@@ -10,6 +10,8 @@ import com.example.core.domain.Mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class ContactsDtoToCommonMapper implements Mapper<List<ContactDto>, List<Contact>> {
 
     @Override
