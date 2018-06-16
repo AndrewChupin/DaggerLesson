@@ -1,4 +1,4 @@
-package com.example.a65apps.daggerlesson.di.common;
+package com.example.a65apps.daggerlesson.di.app;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
