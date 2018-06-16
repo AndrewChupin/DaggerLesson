@@ -49,6 +49,10 @@ dependencies {
     api deps.square.okhttp
     api deps.square.retrofitRxAdapter
     api deps.square.moshiConverter
+    api deps.square.butterknife
+    annotationProcessor deps.square.butterknifeCompiler
+
+    api deps.terrakok.cicerone
 
     api deps.arello.moxy
     api deps.arello.moxyAppCompat
@@ -56,6 +60,4 @@ dependencies {
     api deps.bumptech.glide
     annotationProcessor deps.bumptech.glideCompiler
 
-    api deps.square.butterknife
-    annotationProcessor deps.square.butterknifeCompiler
 }

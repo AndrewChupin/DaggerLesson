@@ -24,6 +24,7 @@ import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
+import ru.terrakok.cicerone.Router;
 
 
 @Module
@@ -37,7 +38,7 @@ public class ContactListModule {
 
     @Provides
     @FragmentScope
-    TokenRepository provideTokenRepository(SharedPreferences sharedPreferences) { // TODO
+    TokenRepository provideTokenRepository(SharedPreferences sharedPreferences) {
         return new TokenRepositoryShared(sharedPreferences);
     }
 
@@ -64,8 +65,8 @@ public class ContactListModule {
 
     @Provides
     @FragmentScope
-    ContactListPresenter provideContactListPresenter(ContactListInteractor contactListInteractor) {
-        return new ContactListPresenter(contactListInteractor);
+    ContactListPresenter provideContactListPresenter(ContactListInteractor contactListInteractor, Router router) {
+        return new ContactListPresenter(contactListInteractor, router);
     }
 
 }

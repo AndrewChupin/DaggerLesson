@@ -10,14 +10,20 @@ import com.example.a65apps.daggerlesson.network.ContactApi;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import ru.terrakok.cicerone.NavigatorHolder;
+import ru.terrakok.cicerone.Router;
 
 
 @Singleton
-@Component(modules = {AppModule.class, DataBaseModule.class, NetworkModule.class})
+@Component(modules = {AppModule.class, DataBaseModule.class, NetworkModule.class, NavigationModule.class})
 public interface AppComponent {
-    void inject(AppDelegate appDelegate);
+    // FOR DEPENDENCY COMPONENT
     SharedPreferences provideShared();
     AppDatabase provideAppDatabase();
     ContactApi provideContactApi();
     Context provideContext();
+    Router provideRouter();
+    NavigatorHolder provideNavigatorHolder();
+
+    void inject(AppDelegate appDelegate);
 }

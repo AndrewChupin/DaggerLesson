@@ -20,12 +20,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
 
     @NonNull
     private Activity activity;
 
-    public ContactAdapterDelegate(@NonNull Activity activity) {
+    ContactAdapterDelegate(
+            @NonNull Activity activity) {
         this.activity = activity;
     }
 
@@ -36,7 +38,7 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
 
     @NonNull
     @Override
-    protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
+    protected BaseViewHolder onCreateViewHolder(ViewGroup parent) {
         View view = activity.getLayoutInflater().inflate(R.layout.item_contact, parent, false);
         view.setOnClickListener((v) -> {
 
@@ -63,7 +65,7 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(Contact contact) {
+        void bind(@NonNull Contact contact) {
             contactName.setText(contact.getName());
             contactPhone.setText(contact.getPhone());
             Glide.with(itemView.getContext())
@@ -73,7 +75,5 @@ public class ContactAdapterDelegate extends AdapterDelegate<List<Contact>> {
                     .into(contactImage);
 
         }
-
     }
-
 }

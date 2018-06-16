@@ -30,6 +30,7 @@ buildscript {
             'robolectric'      : '3.6.1',
             'adapterDelegate'  : '3.0.1',
             'moxyVersion'      : '1.5.5',
+            'ciceroneVersion'  : '3.0.0',
             'butterknifeVersion'      : '8.8.1',
             'sourceCompat'     : JavaVersion.VERSION_1_8,
             'targetCompat'     : JavaVersion.VERSION_1_8
@@ -74,6 +75,9 @@ buildscript {
             ],
             hannes : [
                     'adapterDelegate' : "com.hannesdorfmann:adapterdelegates3:${versions.adapterDelegate}"
+            ],
+            terrakok : [
+                    'cicerone' : "ru.terrakok.cicerone:cicerone:${versions.ciceroneVersion}"
             ],
             arello : [
                     'moxy' : "com.arello-mobile:moxy:${versions.moxyVersion}",

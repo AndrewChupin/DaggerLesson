@@ -7,6 +7,7 @@ import com.example.a65apps.daggerlesson.presentation.contacts.ContactListFragmen
 
 import dagger.Component;
 
+
 @FragmentScope
 @Component(dependencies = {AppComponent.class}, modules = {ContactListModule.class})
 public interface ContactListComponent {

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DiffUtils {
 
-    public static <T> void calcualteDuffs(List<T> oldList, List<T> newList, Function<DiffUtil.DiffResult> function) {
+    public static <T> void calculateDuffs(List<T> oldList, List<T> newList, Function<DiffUtil.DiffResult> function) {
         BaseDiffUtils<T> baseDiffUtils = new BaseDiffUtils<>(oldList, newList);
         DiffUtil.DiffResult result = DiffUtil.calculateDiff(baseDiffUtils, false);
         function.apply(result);
