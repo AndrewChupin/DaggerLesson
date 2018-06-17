@@ -5,11 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.a65apps.daggerlesson.di.app.AppComponent;
-import com.example.a65apps.daggerlesson.di.contact.ContactComponent;
-import com.example.a65apps.daggerlesson.di.main.MainComponent;
-import com.example.a65apps.daggerlesson.di.main.MainModule;
+import com.example.a65apps.daggerlesson.di.app.DaggerAppComponent;
 import com.example.core.di.module.AppModule;
-import com.example.a65apps.daggerlesson.di.common.DaggerAppComponent;
 import com.example.a65apps.daggerlesson.di.app.DataBaseModule;
 
 
